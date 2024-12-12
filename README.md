@@ -1,4 +1,3 @@
-# 27_console_game
 **Names:** Carrie Ko; Meina Liu
 
 **Period:** 6
