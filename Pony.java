@@ -10,7 +10,8 @@ public class Pony extends Adventurer {
     magicWand = magicWandMax/2;
   }  
 
-  public Pony(String name, int HP, int defense, int criticalHits) {
+  @Override
+  public Pony() {
     this("Pony", 20, 50, 10);
   }
   
