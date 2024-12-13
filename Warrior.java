@@ -6,9 +6,33 @@ public class Warrior extends Adventurer {
     super(name, HP, maxHP);
     defense = 10;
     criticalHits = defense/5;
+    whirlWindMax = 10;
+    whirlWind = whirlWindMax/2;
   }  
 
   public Warrior(String name, int HP, int defense, int criticalHits) {
     this("Zoey", 25, 10, 10);
+  }
+  
+    public String getSpecialName(){
+    return "whirlWind";
+  }
+
+  public int getSpecial(){
+    return whirlWind;
+  }
+  
+  public void setSpecial(int n){
+    whirlWind = n;
+  }
+
+  public int getSpecialMax(){
+    return whirlWindMax;
+  }
+
+  public String(Adventurer other){
+    int damge = (int)(Math.random() * 10);
+    other.applyDamage(damage);
+    return this;
   }
 }
