@@ -59,6 +59,9 @@ public class Mage extends Adventurer{
 		return getName() + " heals themselves for 10 HP!";
 	}
 	public String specialAttack(Adventurer other){
+		if(getSpecial() - 5 < 0){
+			return "Not enough mana, so the attack failed!";
+		}
 		other.applyDamage(10);
 		setSpecial(getSpecial() - 5);
 		return getName() + " used fireball and hit " + other.getName() + " for 10 damage!";

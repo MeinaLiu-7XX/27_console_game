@@ -49,6 +49,9 @@ public class Archer extends Adventurer{
 		return getName() + " restores their own stamina to full!";
 	}
 	public String specialAttack(Adventurer other){
+		if(getSpecial() - 8 < 0){
+			return "Not enough stamina, so the attack failed!";
+		}
 		other.applyDamage(12);
 		setSpecial(getSpecial() - 8);
 		return getName() + " fired a volley of arrows and hit " + other.getName() + " for 12 damage!";
