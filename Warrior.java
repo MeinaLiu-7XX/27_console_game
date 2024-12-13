@@ -31,7 +31,7 @@ public class Warrior extends Adventurer {
   }
 
   public String(Adventurer other){
-    int damge = (int)(Math.random() * 10);
+    int damage = (int)(Math.random() * 10);
     other.applyDamage(damage);
     return this;
   }
