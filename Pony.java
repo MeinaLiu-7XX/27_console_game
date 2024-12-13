@@ -30,9 +30,25 @@ public class Pony extends Adventurer {
     return magicWandMax;
   }
 
-  public String(Adventurer other){
+  public String attack(Adventurer other){
     int damage = (int)(Math.random() * 10);
     other.applyDamage(damage);
     return this;
   }
+
+  public String specialAttack(Adventurer other){
+    if (getSpecial() < 4) {
+      other.applyDamage(damage);
+    }
+    else {
+      return "cannot because limit";
+    }
+  }
+
+  public String support(){
+    int hp = 5;
+    setHP(getHP() + hp);
+    return this;
+  }
+  
 }
