@@ -35,4 +35,19 @@ public class Warrior extends Adventurer {
     other.applyDamage(damage);
     return this;
   }
+
+    public String specialAttack(Adventurer other){
+    if (getSpecial() < 6) {
+      other.applyDamage(damage);
+    }
+    else {
+      return "cannot because limit";
+    }
+  }
+
+  public String support(){
+    int hp = 2;
+    setHP(getHP() + hp);
+    return this;
+  }
 }
