@@ -3,9 +3,8 @@ public class Mage extends Adventurer{
 
 	public Mage(String name){
 		super(name);
-	}
-	public Mage(String name, int hp){
-		super(name, hp);
+		mana = 20;
+                maxMana = 20;
 	}
 	public Mage(String name, int mana){
 		super(name);
@@ -18,6 +17,14 @@ public class Mage extends Adventurer{
 		this.maxMana = mana;
 	}
 
+	@Override
+	public int restoreSpecial(int n){
+		if(n > getSpecialMax() - getSpecial()){
+			n = getSpecialMax() - getSpecial();
+		}
+		setSpecial(getSpecial() + n);
+		return n;
+	}
 
 	public String getSpecialName(){
 		return "mana";
@@ -38,6 +45,31 @@ public class Mage extends Adventurer{
 	}
 
 	public String attack(Adventurer other){
-		other.applyDamage(2);
+		other.applyDamage(1);
+		restoreSpecial(2);
+		return getName() + " hit " + other.getName() + " for 1 damage! They then pause, restoring mana with the shed blood.";
+	}
+	public String support(Adventurer other){
+		if(other.getHP() + 10 > other.getmaxHP()){
+			other.setHP(other.getmaxHP());
+		}
+		else{
+			other.setHP(other.getHP() + 10);
+		}
+		return getName() + " heals " + other.getName() + " for 10 HP!";
+	}
+	public String support(){
+		if(getHP() + 10 > getmaxHP()){
+                        setHP(getmaxHP());
+                }
+                else{
+                        setHP(getHP() + 10);
+                }
+		return getName() + " heals themselves for 10 HP!";
+	}
+	public String specialAttack(Adventurer other){
+		other.applyDamage(10);
+		setSpecial(getSpecial() - 5);
+		return getName() + " used fireball and hit " + other.getName() + " for 10 damage!";
 	}
 }
