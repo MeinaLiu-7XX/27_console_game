@@ -17,15 +17,6 @@ public class Mage extends Adventurer{
 		this.maxMana = mana;
 	}
 
-	@Override
-	public int restoreSpecial(int n){
-		if(n > getSpecialMax() - getSpecial()){
-			n = getSpecialMax() - getSpecial();
-		}
-		setSpecial(getSpecial() + n);
-		return n;
-	}
-
 	public String getSpecialName(){
 		return "mana";
 	}
