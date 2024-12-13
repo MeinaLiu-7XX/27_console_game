@@ -1,66 +1,56 @@
-public class Archer{
-	private int mana, maxMana;
+public class Archer extends Adventurer{
+	private int stamina, maxStamina;
 
-	public Mage(String name){
-		super(name);
-		mana = 20;
-                maxMana = 20;
+	public Archer(String name){
+		super(name, 15);
+		stamina = 15;
+                maxStamina = 15;
 	}
-	public Mage(String name, int mana){
-		super(name);
-		this.mana = mana;
-		this.maxMana = mana;
+	public Archer(String name, int stamina){
+		super(name, 15);
+		this.stamina = stamina;
+		this.maxStamina = stamina;
 	}
-	public Mage(String name, int hp, int mana){
+	public Archer(String name, int hp, int stamina){
 		super(name, hp);
-		this.mana = mana;
-		this.maxMana = mana;
+		this.stamina = stamina;
+		this.maxStamina = stamina;
 	}
 
 	public String getSpecialName(){
-		return "mana";
+		return "Stamina";
 	}
 	public int getSpecial(){
-		return mana;
+		return stamina;
 	}
 	public void setSpecial(int n){
-		if(mana + n > maxMana){
-			mana = maxMana;
+		if(stamina + n > maxStamina){
+			stamina = maxStamina;
 		}
 		else{
-			mana = n;
+			stamina = n;
 		}
 	}
 	public int getSpecialMax(){
-		return maxMana;
+		return maxStamina;
 	}
 
 	public String attack(Adventurer other){
 		other.applyDamage(1);
 		restoreSpecial(2);
-		return getName() + " hit " + other.getName() + " for 1 damage! They then pause, restoring mana with the shed blood.";
+		return getName() + " shot an arrow and hit " + other.getName() + " for 3 damage! They then pause, catching their breath.";
 	}
 	public String support(Adventurer other){
-		if(other.getHP() + 10 > other.getmaxHP()){
-			other.setHP(other.getmaxHP());
-		}
-		else{
-			other.setHP(other.getHP() + 10);
-		}
-		return getName() + " heals " + other.getName() + " for 10 HP!";
+		other.setSpecial(other.getSpecialMax());
+		return getName() + " restores " + other.getName() + "'s " + other.getSpecialName() + " to full!";
 	}
 	public String support(){
-		if(getHP() + 10 > getmaxHP()){
-                        setHP(getmaxHP());
-                }
-                else{
-                        setHP(getHP() + 10);
-                }
-		return getName() + " heals themselves for 10 HP!";
+		setSpecial(getSpecialMax());
+		return getName() + " restores their own stamina to full!";
 	}
 	public String specialAttack(Adventurer other){
-		other.applyDamage(10);
-		setSpecial(getSpecial() - 5);
-		return getName() + " used fireball and hit " + other.getName() + " for 10 damage!";
+		other.applyDamage(12);
+		setSpecial(getSpecial() - 8);
+		return getName() + " fired a volley of arrows and hit " + other.getName() + " for 12 damage!";
 	}
 }
