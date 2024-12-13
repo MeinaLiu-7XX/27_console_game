@@ -4,8 +4,11 @@ public class Warrior extends Adventurer {
     
   public Warrior(String name, int HP, int defense, int criticalHits) {
     super(name, HP, maxHP);
-    this.defense = defense;
-    this.criticalHits = criticalHits;
-    this("Zoey", 25, 10, 2);  
+    defense = 10;
+    criticalHits = defense/5;
   }  
+
+  public Warrior(String name, int HP, int defense, int criticalHits) {
+    this("Zoey", 25, 10, 10);
+  }
 }
