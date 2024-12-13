@@ -30,7 +30,7 @@ public class Warrior extends Adventurer {
     return whirlWindMax;
   }
 
-  public String(Adventurer other){
+  public String attack(Adventurer other){
     int damage = (int)(Math.random() * 10);
     other.applyDamage(damage);
     return this;
