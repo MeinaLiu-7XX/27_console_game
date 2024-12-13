@@ -10,7 +10,8 @@ public class Warrior extends Adventurer {
     whirlWind = whirlWindMax/2;
   }  
 
-  public Warrior(String name, int HP, int defense, int criticalHits) {
+  @Override
+  public Warrior() {
     this("Zoey", 25, 10, 10);
   }
   
@@ -30,9 +31,24 @@ public class Warrior extends Adventurer {
     return whirlWindMax;
   }
 
-  public String(Adventurer other){
+  public String attack(Adventurer other){
     int damage = (int)(Math.random() * 10);
     other.applyDamage(damage);
+    return this;
+  }
+
+    public String specialAttack(Adventurer other){
+    if (getSpecial() < 6) {
+      other.applyDamage(damage);
+    }
+    else {
+      return "cannot because limit";
+    }
+  }
+
+  public String support(){
+    int hp = 2;
+    setHP(getHP() + hp);
     return this;
   }
 }
