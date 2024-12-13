@@ -10,7 +10,8 @@ public class Warrior extends Adventurer {
     whirlWind = whirlWindMax/2;
   }  
 
-  public Warrior(String name, int HP, int defense, int criticalHits) {
+  @Override
+  public Warrior() {
     this("Zoey", 25, 10, 10);
   }
   
