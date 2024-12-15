@@ -1,55 +1,64 @@
 public class Pony extends Adventurer {
-  private int defense;
-  private int criticalHits;
-    
-  public Pony(String name, int HP, int defense, int criticalHits) {
-    super(name, HP, maxHP);
-    defense = 50;
-    criticalHits = defense/5;
-    magicWandMax = 20;
-    magicWand = magicWandMax/2;
-  }  
+  private int maxCharges; 
+  private int charges; 
 
-  @Override
-  public Pony() {
-    this("Pony", 20, 50, 10);
-  }
+  public Pony(String name, int HP) {
+    super(name, HP);
+    this.maxCharges = 5;
+    this.charges = maxCharges;
+  }  
   
   public String getSpecialName(){
-    return "magicWand";
+    return "charges";
   }
 
   public int getSpecial(){
-    return magicWand;
+    return charges;
   }
   
-  public void setSpecial(int n){
-    magicWand = n;
+  public void setSpecial(int c){
+    charges = c;
   }
 
   public int getSpecialMax(){
-    return magicWandMax;
+    return maxCharges;
   }
 
   public String attack(Adventurer other){
-    int damage = (int)(Math.random() * 10);
+    int damage = 5;
     other.applyDamage(damage);
-    return this;
+    return other.getName() + " got hit by " + this.getName() + " and took 5 damage.";
   }
 
-  public String specialAttack(Adventurer other){
-    if (getSpecial() < 4) {
-      other.applyDamage(damage);
-    }
-    else {
-      return "cannot because limit";
+  public String support(Adventurer other){
+    if (other.getHP() == 0) {
+      other.setHP(other.getmaxHP());
+      return this.getName() + " revived " + other.getName() + ".";
+    } else {
+      return "Cannot revive, because" + other.getName() + " is alive.";
     }
   }
 
   public String support(){
-    int hp = 5;
-    setHP(getHP() + hp);
-    return this;
+    int heal = 5;
+    
+    this.setHP(this.getHP() + heal);
+
+    if (this.getHP() > this.getmaxHP()) {
+      this.setHP(this.getmaxHP());
+    }
+    return this.getName() + " healed itself to " + this.getHP() + ".";
   }
-  
+
+  public String specialAttack(Adventurer other){
+    int damage = 20;
+    if (charges > 0) {
+      other.applyDamage(damage);
+      charges -= 1;
+      return other.getName() + "took " + damage + ".";
+    }
+    else {
+      return this.getName() + " is out of charges.";
+    }
+  }
 }

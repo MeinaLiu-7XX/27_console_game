@@ -4,7 +4,7 @@ public class Archer extends Adventurer{
 	public Archer(String name){
 		super(name, 15);
 		stamina = 15;
-                maxStamina = 15;
+        maxStamina = 15;
 	}
 	public Archer(String name, int stamina){
 		super(name, 15);
