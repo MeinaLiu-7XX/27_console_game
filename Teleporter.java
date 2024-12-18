@@ -27,7 +27,7 @@ public class Teleporter extends Adventurer {
   public String attack(Adventurer other) {
     int damage = (int)(Math.random() * 10);
     other.applyDamage(damage);
-    return this.getName() + "summons a hammer." + other.getName() + "was attacked by " + this.getName() + "and took in " + damage + " damage.";
+    return this.getName() + " summons a hammer. " + other.getName() + " was attacked by " + this.getName() + " and took in " + damage + " damage.";
   }
 
   public String specialAttack(Adventurer other){
