@@ -16,7 +16,7 @@ public class Game {
 
     public static void main(String[] args) {
         Adventurer enemy = new Mage("Cyberpony", 50);
-        Adventurer player = null; 
+        Adventurer player = null;
 
         Scanner input = new Scanner(System.in);
 
@@ -30,21 +30,18 @@ public class Game {
                 "\n" + MAGENTA + "Archer (a), Mage (m), Pony (p), Teleporter (t)" + RESET);
         String cClass = input.nextLine().toLowerCase();
 
-        System.out.println(GREEN + "How much HP does your character have?" + RESET);
-        int HP = input.nextInt();
-        input.nextLine();
-
+        // Assign default HP values based on class
         if (cClass.equals("a")) {
-            player = new Archer(name, HP);
+            player = new Archer(name, 30);
         } else if (cClass.equals("m")) {
-            player = new Mage(name, HP);
+            player = new Mage(name, 25);
         } else if (cClass.equals("p")) {
-            player = new Pony(name, HP);
+            player = new Pony(name, 40);
         } else if (cClass.equals("t")) {
-            player = new Teleporter(name, HP);
+            player = new Teleporter(name, 35);
         } else {
             System.out.println(RED + "Invalid class entered. Defaulting to Mage." + RESET);
-            player = new Mage(name, HP);
+            player = new Mage(name, 25);
         }
 
         System.out.println("\n" + BOLD + "Game Start!" + RESET);
