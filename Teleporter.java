@@ -35,7 +35,7 @@ public class Teleporter extends Adventurer {
     if (mana >= 50) {
       other.applyDamage(damage);
       mana -= 50;
-      return this.getName() + "teleports behind " + other.getName() + ". " + other.getName() + "was attacked by " + this.getName() + "and took in " + damage + " damage.";
+      return this.getName() + " teleports behind " + other.getName() + ". " + other.getName() + " was attacked by " + this.getName() + " and took in " + damage + " damage.";
     } else {
       return "cannot because limit";
     }
